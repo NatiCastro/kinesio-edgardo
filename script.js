@@ -1,3 +1,4 @@
+
 function homeView(padre) {
     $(padre).html(`
         <div class="seccion-mobile">
@@ -44,13 +45,13 @@ function homeView(padre) {
           <span class="visually-hidden">Next</span>
         </button>
       </div>
-        <h2>Edgardo Castro</h2>
-        <h5>Kinesiologo especialista en Kinesiología Deportiva</h5>
-        <h6>Universidad de Morón <br> Universidad de Favaloro</h6>
+        <h2 class="nombre">Edgardo Castro</h2>
+        <h5 class="profesion">Kinesiologo especialista en Kinesiología Deportiva</h5>
+        <h6 class="universidad">Universidad de Morón <br> Universidad de Favaloro</h6>
       <div class="container card-group">    
         <div class="card text-white m-4">
         <a class="link-card" href="#/servicios">
-        <img src="./Images/carousel-4.jpg" class="card-img" alt="...">
+        <img src="./Images/imagen-card.jpg" class="card-img" alt="...">
         <div class="card-img-overlay container-titulo-card">
         <hr>
           <h5 class="card_title">Servicios</h5>
@@ -73,6 +74,7 @@ function homeView(padre) {
         <span class="parrafo-footer">Copyright 2022 | Creado por NatDev</span>
         <a href="#"><i class="bi bi-instagram icono-insta"></i></a>
         <a href="#"><i class="bi bi-facebook icono-face"></i></a>
+        <a href="https://alvo.chat/V1" target="_blank"><i class="bi bi-whatsapp icono-whapp"></i></a>
         </div>
     `);
 }
@@ -92,6 +94,7 @@ function servicesView(padre) {
                 <span class="parrafo-footer">Copyright 2022 | Creado por NatDev</span>
                 <a href="#"><i class="bi bi-instagram icono-insta"></i></a>
                 <a href="#"><i class="bi bi-facebook icono-face"></i></a>
+                <a href="https://alvo.chat/V1" target="_blank"><i class="bi bi-whatsapp icono-whapp"></i></a>
                 </div>
         </section>
     `);
@@ -99,26 +102,32 @@ function servicesView(padre) {
 
 function contactView(padre) {
     $(padre).html(`
-        <section>
+        <section class="seccion-contacto">
             <h1>Contacto</h1>
-            <form class="form" action="">
+            <form id="enviar" class="form" action="">
             <label class="form_label" for="name">Nombre</label>
-            <input class="form_input" type="text" placeholder="Nombre"/>
+            <input class="form_input" type="text" required="required" placeholder="Nombre"/>
             <label class="form_label" for="email">Email</label>
-            <input class="form_input" type="email" placeholder="Email"/>
+            <input id="email" 
+            class="form_input" 
+            type="email" 
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            placeholder="Email"
+            />
+            <h5 id="result"></h5>
             <label class="form_label" for="text">Mensaje</label>
-            <textarea name="message" id="" cols="30" rows="10"></textarea>
+            <textarea name="message" id="" cols="30" rows="9" required="required"></textarea>
             <input class="input_enviar" type="submit" value="Enviar" />
           </form>
           <div class="footer fixed-bottom">
           <span class="parrafo-footer">Copyright 2022 | Creado por NatDev</span>
           <a href="#"><i class="bi bi-instagram icono-insta"></i></a>
           <a href="#"><i class="bi bi-facebook icono-face"></i></a>
+          <a href="https://alvo.chat/V1" target="_blank"><i class="bi bi-whatsapp icono-whapp"></i></a>
           </div>
         </section>
     `);
 }
-
 
 
 //Declaro las rutas
@@ -128,7 +137,7 @@ const routes = [
     {path: "/contacto", action: "contacto"}
 ]
 
-console.dir(location);
+//console.dir(location);
 
 // Función que nos dice cuál es nuestra locacion
 const parseLocation = () => location.hash.slice(1).toLowerCase() || "/"
@@ -176,13 +185,46 @@ $(window).on("hashchange", function() {
 })
 
 
-{/* 
+// Formulario
 
-*/}
 
-{/* <div class="segunda-imagen">
-<a class="link-servicios" href="#/servicios">
-<img class="img-link-servicios" src="/Images/principal2.jpg" alt="maniobra-pesa">Servicios
-</a>
-</div> 
-</div> */}
+let inputEmail = $("#email").val();
+console.log(inputEmail);
+
+const validateEmail = (email) => {
+  return email.match(
+    /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  );
+};
+
+const validate = () => {
+  let resultado = $("#result");
+  let email = $("#email").val();
+  resultado.text ('');
+
+  if (validateEmail(email)) {
+    console.log(email);
+    resultado.text(email + ' es válido');
+    resultado.css('color', 'green');
+  } else {
+    resultado.text(email + ' es inválido');
+    resultado.css('color', 'red');
+  }
+  return false;
+}
+
+$('#email').on("input", validate);
+
+$(()=>{
+
+
+$('#enviar').on("submit", function(e) {
+    e.preventDefault();
+
+    console.log("Mensaje enviado");
+
+    e.submit;
+
+})
+
+})

@@ -15,7 +15,7 @@ h1 {
     font-size: 2.2rem;
     font-weight: 600;
 }
-
+/* Imagenes mobile */
 .imagen-principal {
     display: flex;
     justify-content: center;
@@ -25,6 +25,7 @@ img {
     width: 305px;
     height: auto;
 }
+/* Cards */
 .container-titulo-card {
     display: flex;
     flex-direction: column;
@@ -38,22 +39,26 @@ img {
 .link-card:hover {
     color: rgb(58, 57, 57);
 }
+.card {
+    border: none;
+}
 .card_title {
     font-size: 3rem;
+    text-align: center;
 }
-h2 {
+.nombre {
     margin-top: 1rem;
     font-size: 1.8rem;
     text-align: center;
     font-weight: 700;
 }
-h5 {
+.profesion {
     margin-top: 0,5rem;
     text-align: center;
     font-size: 1rem;
     font-variant: small-caps;
 }
-h6 {
+.universidad {
     text-align: center;
     margin: 0.8rem;
     font-size: 0.8rem;
@@ -83,6 +88,7 @@ p {
 }
 .form_input {
     outline: none;
+    width: 16rem;
     border-radius: 5px;
     border: 1px solid teal;
     box-shadow: 2px 2px 2px rgba(0, 128, 128, 0.267);
@@ -101,7 +107,7 @@ textarea:focus {
 }
 .input_enviar {
     margin-top: 1rem;
-    width: 8rem;
+    width: 9rem;
     height: 2rem;
     background-color: teal;
     border-style: none;
@@ -140,7 +146,12 @@ textarea:focus {
     color: gray;
     font-size: 1.5rem;
 }
-.icono-insta:focus, .icono-face:focus {
+.icono-whapp {
+    margin: 0.5rem;
+    color: gray;
+    font-size: 1.8rem;
+}
+.icono-insta:focus, .icono-face:focus, .icono-whapp:focus {
     color: rgba(128, 128, 128, 0.438);
 }
 
@@ -158,6 +169,16 @@ textarea:focus {
     .parrafo-carousel {
         font-size: 1.5rem;
     }
+    .nombre {
+        margin-top: 1.5rem;
+        font-size: 2.2rem;
+    }
+    .prosefion {
+        font-size: 1.4rem;
+    }
+    .universidad {
+        font-size: 1rem;
+    }
     .parrafo-footer {
         margin-right: 1rem;
         margin-left: 1rem;
@@ -168,7 +189,10 @@ textarea:focus {
         color: gray;
         font-size: 1.8rem;
     }
-    .icono-insta:hover, .icono-face:hover {
+    .icono-insta:hover, .icono-face:hover, .icono-whapp:hover {
         color: rgba(128, 128, 128, 0.438);
+    }
+    .seccion-contacto {
+        min-height: 100vh;
     }
 }
